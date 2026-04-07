@@ -7,18 +7,20 @@ import { HashLoader } from 'react-spinners';
 const AppDetails = () => {
     const { id } = useParams()
     console.log(id)
-    const { apps, isLoading } = useexpectedDatas()
+    const { apps, isLoding } = useexpectedDatas()
     const expectedData = apps.find((app) => app.id == id)
     console.log(expectedData)
+
+    if (isLoding) {
+        return <div className='flex justify-center items-center h-screen'><HashLoader color="#00D390" size={50} /></div>
+    }
     return (
         <div>
-         {
-            isLoading? <HashLoader/>
-            :
-              <div className='max-w-400 mx-auto bg-[#F1F5E8]'>
+
+            <div className='max-w-400 mx-auto bg-[#F1F5E8]'>
                 <div className='max-w-7xl mx-auto min-h-screen px-4 '>
                     <div className=" flex flex-col md:flex md:flex-row gap-10  items-center pt-20">
-                        <div className='w-87.5 h-87.5 '><img className='w-full' src={expectedData?.image} alt="" /></div>
+                        <div className='w-87.5 h-87.5 '><img className='w-full' src={expectedData.image} alt="" /></div>
 
                         <div className=' p-4 flex flex-col gap-7.5 items-center sm:items-start'>
                             <div className='flex flex-col gap-2 '><h2 className='font-bold text-[32px] text-[#001931]'>{expectedData?.expectedDataName}</h2><p><span className='text-[#627382] text-[20px'>Developed by</span> <span className='font-semibold text-[20px]'>productive.io</span></p></div>
@@ -91,7 +93,7 @@ const AppDetails = () => {
                     </div>
                 </div>
             </div>
-         } 
+
         </div>
     );
 };

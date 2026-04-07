@@ -10,6 +10,8 @@ import InstallApps from './pages/installationapps/InstallApps.jsx'
 import Not_Found from './components/Not_Found/Not_Found.jsx'
 import AppDetails from './components/appDetails/AppDetails.jsx'
 
+import AppcontextProvider from './AppContext/AppContext'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -36,7 +38,9 @@ const router = createBrowserRouter([
   }
 ])
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} >
-    <App />
-  </RouterProvider>,
+  <AppcontextProvider>
+    <RouterProvider router={router} >
+      <App />
+    </RouterProvider>,
+  </AppcontextProvider>
 )

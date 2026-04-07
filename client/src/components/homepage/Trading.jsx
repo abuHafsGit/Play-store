@@ -18,9 +18,11 @@ const Trading = () => {
                 </div>
                 <div className=' grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-8 mt-18 hover:cursor-pointer'>
                     {
-                        isLoding ? <HashLoader /> : apps.slice(0, 8).map((app, index) => (
-                            <Card key={index} app={app} />
-                        ))
+                        isLoding ? <div className='flex justify-center items-center h-screen'><HashLoader color="#00D390" size={50} /></div>
+                            :
+                            apps.slice(0, 8).map((app, index) => (
+                                <Card key={index} app={app} />
+                            ))
                     }
                 </div>
                 <div className='flex justify-center items-center pt-10 pb-20'>
