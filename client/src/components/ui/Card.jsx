@@ -5,7 +5,7 @@ import { assets } from '../../assets/assets';
 const Card = ({ app }) => {
     const navigate = useNavigate()
     return (
-        <div className='  mx-auto ' onClick={() => { navigate(`/appDetails/${app._id}`); scrollTo(0, 0) }}>
+        <div className='  mx-auto ' onClick={() => { navigate(`/apps/${app.id}`); scrollTo(0, 0) }}>
             <div className='border flex  flex-col  p-3 gap-4 bg-white rounded-sm border-none hover:shadow-2xl '>
                 <div className='w-full'>
                     <img className='w-full' src={app.image} alt="" />

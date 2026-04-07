@@ -8,6 +8,7 @@ import HomePage from './pages/homepage/HomePage.jsx'
 import Apps from './pages/apps/Apps.jsx'
 import InstallApps from './pages/installationapps/InstallApps.jsx'
 import Not_Found from './components/Not_Found/Not_Found.jsx'
+import AppDetails from './components/appDetails/AppDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/installapp",
         element: <InstallApps />
+      },
+      {
+        path: '/apps/:id',
+        element: <AppDetails />
       }
     ],
     errorElement: <Not_Found />

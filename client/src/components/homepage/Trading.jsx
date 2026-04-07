@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import Card from '../Card/Card';
+import Card from '../ui/Card';
+import { HashLoader } from 'react-spinners'
+import useApps from '../../hooks/useApps';
 
 // const fecthApp = fetch('/data.json').then(res => res.json())
 const Trading = () => {
-    const [apps, setApps] = useState([])
-    const [isLoding, setIsLoding] = useState(true)
-    useEffect(() => {
-        const fecthApp = async () => {
-            const res = await fetch('/data.json')
-            const data = await res.json()
-
-            setTimeout(() => {
-                setApps(data)
-                setIsLoding(false)
-            }, 3500);
-        }
-        fecthApp()
-    }, [])
+    const { apps, isLoding } = useApps()
 
     const navigate = useNavigate()
     console.log(apps)
@@ -30,13 +18,13 @@ const Trading = () => {
                 </div>
                 <div className=' grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-8 mt-18 hover:cursor-pointer'>
                     {
-                        isLoding ? <h1>loding</h1> : apps.slice(0, 8).map((app, index) => (
+                        isLoding ? <HashLoader /> : apps.slice(0, 8).map((app, index) => (
                             <Card key={index} app={app} />
                         ))
                     }
                 </div>
                 <div className='flex justify-center items-center pt-10 pb-20'>
-                    <button onClick={() => { navigate('/appnotfound'); scrollTo(0, 0) }} className='text-white bg-linear-to-r from-[#632EE3] to-[#9F62F2] px-4 py-3 rounded-sm font-semibold text-base cursor-pointer '>Show All</button>
+                    <button onClick={() => { navigate('/apps'); scrollTo(0, 0) }} className='text-white bg-linear-to-r from-[#632EE3] to-[#9F62F2] px-4 py-3 rounded-sm font-semibold text-base cursor-pointer '>Show All</button>
                 </div>
             </div>
         </div>
