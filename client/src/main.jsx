@@ -11,6 +11,7 @@ import Not_Found from './components/Not_Found/Not_Found.jsx'
 import AppDetails from './components/appDetails/AppDetails.jsx'
 
 import AppcontextProvider from './AppContext/AppContext'
+import Dashborad from './pages/Dashboard/Dashborad.jsx'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/apps/:id',
         element: <AppDetails />
+      },
+      {
+        path: 'dashboard',
+        element: <Dashborad />
       }
     ],
     errorElement: <Not_Found />
