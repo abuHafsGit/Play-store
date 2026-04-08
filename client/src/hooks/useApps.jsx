@@ -11,7 +11,7 @@ const useApps = () => {
             setTimeout(() => {
                 setApps(data)
                 setIsLoding(false)
-            }, 3500);
+            }, 1000);
         }
         fecthApp()
     }, [])

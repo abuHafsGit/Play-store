@@ -3,13 +3,21 @@ import { useParams } from 'react-router';
 import useexpectedDatas from '../../hooks/useApps';
 import { assets } from '../../assets/assets';
 import { HashLoader } from 'react-spinners';
-
+import { UseAppContext } from '../../AppContext/AppContext';
+import { toast } from 'react-toastify';
 const AppDetails = () => {
     const { id } = useParams()
     console.log(id)
     const { apps, isLoding } = useexpectedDatas()
     const expectedData = apps.find((app) => app.id == id)
     console.log(expectedData)
+    const { isInstalled, setIsInstalled } = UseAppContext()
+    const handleInstall = () => {
+        setIsInstalled([...isInstalled, expectedData])
+        toast.success('App installed successfully!')
+
+    }
+
 
     if (isLoding) {
         return <div className='flex justify-center items-center h-screen'><HashLoader color="#00D390" size={50} /></div>
@@ -42,7 +50,7 @@ const AppDetails = () => {
                                     <h2>{expectedData?.review}</h2>
                                 </div>
                             </div>
-                            <div><button className='bg-[#00D390] px-5 py-3.5 rounded-sm text-white font-semibold text-[20px] cursor-pointer'>Install Now (291 MB)</button></div>
+                            <div><button onClick={handleInstall} className='bg-[#00D390] px-5 py-3.5 rounded-sm text-white font-semibold text-[20px] cursor-pointer'>Install Now (291 MB)</button></div>
                         </div>
                     </div>
                     <hr className=' bg-[#001931] border-none outline-none w-full h-0.5 my-10' />
